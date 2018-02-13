@@ -4,7 +4,9 @@
   "description": "Fastify plugin to parse XML payload into JS object",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine test/*test.js"
+    "test": "jasmine test/*test.js",
+    "coverage": "istanbul cover -x \"test/*test.js\" jasmine test/*test.js;",
+    "coverage:check": "istanbul check-coverage --branch 90 --statement 90"
   },
   "keywords": [
     "fastify",
@@ -25,9 +27,7 @@
     "istanbul": "^0.4.5",
     "jasmine": "^3.0.0",
     "jasmine-core": "^2.99.1",
-    "portfinder": "^1.0.13",
     "fastify": "^1.0.0-rc.1",
-    "request": "^2.83.0",
-    "tap": "^11.1.0"
+    "request": "^2.83.0"
   }
 }
