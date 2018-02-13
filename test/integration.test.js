@@ -31,14 +31,13 @@ describe("XML Body Parser", function () {
                 var expected = {
                   "valid" : "XML"
                 }
-                //console.log(body.toString('hex'));
                 expect(JSON.parse(body)).toEqual(expected);
                 done()
               }
             )
         });
 
-        /*it("should not parse if non-xml payload", function (done) {
+        it("should not parse if non-xml payload: text/plain", function (done) {
         runFastify(
             null,
             "string",
@@ -48,7 +47,19 @@ describe("XML Body Parser", function () {
                 done()
               }
             )
-        });*/
+        });
+
+        it("should not parse if non-xml payload: application/json", function (done) {
+        runFastify(
+            null,
+            {"valid":"JSON"},
+            "application/json",
+            function(err, response, body){
+                expect(body.toString()).toBe("string");
+                done()
+              }
+            )
+        });
 
       it("should parse for custom content-type", function (done) {
         runFastify(
