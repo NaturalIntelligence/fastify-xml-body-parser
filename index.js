@@ -16,8 +16,16 @@ function xmlBodyParserPlugin(fastify, options, next) {
         const parsingOpts = opts;
 
         let body = ''
+        req.on('error', errorListener)
         req.on('data', dataListener)
+        req.on('end', endListener)
 
+        function errorListener (err) {
+          done(err)
+        }
+        function endListener () {
+          done(null, qs.parse(body))
+        }
         function dataListener(data) {
             body = body + data
 
@@ -26,6 +34,9 @@ function xmlBodyParserPlugin(fastify, options, next) {
                 if (result.err) {
                     const invalidFormat = Error('Invalid Format: ' + result.err.msg)
                     invalidFormat.statusCode = 400
+                    req.removeListener('error', errorListener)
+                    req.removeListener('data', dataListener)
+                    req.removeListener('end', endListener)
                     done(invalidFormat)
                 }
             }
