@@ -53,7 +53,7 @@ The sent reply would be the object:
 ```
 
 ## Options
-This plugin use [fastify-xml-body-parser](https://github.com/NaturalIntelligence/fastify-xml-body-parser) to parse the XML payload. So it accepts all the options supported by fastify-xml-body-parser.
+This plugin use [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser) to parse the XML payload. So it accepts all the options supported by fast-xml-parser.
 
 ```js
 
