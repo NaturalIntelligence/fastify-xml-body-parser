@@ -55,7 +55,8 @@ describe("XML Body Parser", function () {
             {"valid":"JSON"},
             "application/json",
             function(err, response, body){
-                expect(body.toString()).toBe("string");
+                expect(response.statusCode).toBe(200);
+                expect(JSON.parse(body)).toEqual({"valid":"JSON"});
                 done()
               }
             )

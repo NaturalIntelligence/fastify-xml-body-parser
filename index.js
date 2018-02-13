@@ -14,9 +14,9 @@ function xmlBodyParserPlugin(fastify, options, next) {
 
     function contentParser(req, done) {
         const parsingOpts = opts;
-        if (!isSupportingContentType(parsingOpts.contentType, req.headers["content-type"])) {
+        /*if (!isSupportingContentType(parsingOpts.contentType, req.headers["content-type"])) {
             next()
-        }
+        }*/
 
         let body = ''
         req.on('data', dataListener)
@@ -37,7 +37,7 @@ function xmlBodyParserPlugin(fastify, options, next) {
             }
             done(null, fxp.parse(body, parsingOpts))
         }
-        req.on('end', function() {
+        /*req.on('end', function() {
             try {
                 const parsed = qs.parse(body)
                 done(null, parsed)
@@ -45,12 +45,18 @@ function xmlBodyParserPlugin(fastify, options, next) {
                 done(e)
             }
         })
-        req.on('error', done)
+        req.on('error', done)*/
 
     }
 
-    fastify.addContentTypeParser("*", contentParser)
-
+    if(typeof opts.contentType === "string"){
+      fastify.addContentTypeParser(opts.contentType, contentParser)
+    }else{
+      for(var i=0; i< opts.contentType.length; i++){
+        fastify.addContentTypeParser(opts.contentType[i], contentParser)
+      }
+    }
+    
     next()
 }
 
