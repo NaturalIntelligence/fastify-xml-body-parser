@@ -1,0 +1,12 @@
+{
+  "ignore": ["**/lib/**","**/coverage/**","**/node_modules/**"],
+  "test": [
+    "**/test/**"
+  ],
+  "dependencies": {
+    "mute": [
+      "coveralls",
+      "istanbul"
+    ]
+  }
+}
