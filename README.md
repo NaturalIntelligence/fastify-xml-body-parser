@@ -83,6 +83,11 @@ Additionaly, it supports following options
 * **validate**: If it is set to `true`, this plugin validate the payload for valid XML syntax before parsing.
 * **contentType**:  It accepts a string or an array of content types. By default it is set to `["text/xml", "application/xml", "application/rss+xml"]`.
 
+**Note**: I've not included body size limit to this plugin because of following reasons
+* I believe it's good to use API gateway to handle non-functional requirements, like security.
+* There are already some plugins which verifies for body length. It'll be a performance degrade if all the plugins are doing the same thing.
+
+
 ## License
 [MIT License](http://jsumners.mit-license.org/)
 
