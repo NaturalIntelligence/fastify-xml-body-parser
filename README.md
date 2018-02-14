@@ -85,3 +85,11 @@ Additionaly, it supports following options
 
 ## License
 [MIT License](http://jsumners.mit-license.org/)
+
+## Worth to mention
+
+Don't forget to check my other opensource projects
+
+* **[fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser)** : Validate XML or Parse XML to JS/JSON rapidly without C/C++ based libraries and no callback. Work with NPM, in all browsers, and CLI.
+* **[stubmatic](https://github.com/NaturalIntelligence/stubmatic)** : A QA friendly stub server to mock behaviour of HTTP(s) / REST / SOAP services. Now you can create simulators or mock services in few minutes without coding.
+* **[fast-lorem-ipsum](https://github.com/NaturalIntelligence/fast-lorem-ipsum)** : Generate lorem ipsum words, sentences, paragraph very quickly. Better than any generater. Works with NPM, browser, and CLI.
