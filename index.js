@@ -24,15 +24,10 @@ function xmlBodyParserPlugin(fastify, options, next) {
           done(err)
         }
         function endListener () {
-          done(null, qs.parse(body))
-        }
-        function dataListener(data) {
-            body = body + data
-
             if (parsingOpts.validate) {
                 var result = fxp.validate(body, parsingOpts)
                 if (result.err) {
-                    const invalidFormat = Error('Invalid Format: ' + result.err.msg)
+                    const invalidFormat = new Error('Invalid Format: ' + result.err.msg)
                     invalidFormat.statusCode = 400
                     req.removeListener('error', errorListener)
                     req.removeListener('data', dataListener)
@@ -41,6 +36,9 @@ function xmlBodyParserPlugin(fastify, options, next) {
                 }
             }
             done(null, fxp.parse(body, parsingOpts))
+        }
+        function dataListener(data) {
+            body = body + data
         }
     }
 
