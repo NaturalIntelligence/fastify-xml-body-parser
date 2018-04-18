@@ -18,7 +18,7 @@
   "author": "Amit Gupta (https://github.com/amitguptagwl)",
   "license": "MIT",
   "dependencies": {
-    "fast-xml-parser": "^3.0.1",
+    "fast-xml-parser": "^3.3.8",
     "fastify-plugin": "^0.2.2"
   },
   "devDependencies": {
