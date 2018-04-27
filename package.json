@@ -22,7 +22,6 @@
     "fastify-plugin": "^0.2.2"
   },
   "devDependencies": {
-    "coveralls": "^3.0.0",
     "istanbul": "^0.4.5",
     "jasmine": "^3.0.0",
     "jasmine-core": "^2.99.1",
