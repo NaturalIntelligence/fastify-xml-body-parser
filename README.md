@@ -95,10 +95,9 @@ Additionaly, it supports following options
 
 Don't forget to check my other opensource projects
 
-- **[निम्न (NIMN)](https://github.com/nimndata/spec)** : Schema aware object compression. 60% more compressed than JSON. 40% more compressed than msgpack.
-- **[imglab](https://github.com/NaturalIntelligence/imglab)** : Web based tool to label images for object. So that they can be used to train dlib or other object detectors. You can integrate 3rd party libraries for fast labeling.
-- **[अनुमार्गक (anumargak)](https://github.com/NaturalIntelligence/anumargak)** : The fastest router for node web servers.
-
-* **[fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser)** : Validate XML or Parse XML to JS/JSON rapidly without C/C++ based libraries and no callback. Work with NPM, in all browsers, and CLI.
-* **[stubmatic](https://github.com/NaturalIntelligence/stubmatic)** : A QA friendly stub server to mock behaviour of HTTP(s) / REST / SOAP services. Now you can create simulators or mock services in few minutes without coding.
+- **[निम्न (NIMN)](https://github.com/nimndata/spec)** : Save upto 85% network bandwidth or storage.
+- **[imglab](https://github.com/NaturalIntelligence/imglab)** : Fast and simple web based tool to label images for machine learning. It supports multiple formats.
+- **[अनुमार्गक (anumargak)](https://github.com/NaturalIntelligence/anumargak)** : The fastest and simple to use router for node web servers.
+- **[शब्दावली (shabdawali) ](https://github.com/amitguptagwl/shabdawali)** : Amazing human like typing effects beyond your imagination. check [वार्ता (vaarta)](https://github.com/amitguptagwl/vaarta) for talking/chatting effects.
+* **[stubmatic](https://github.com/NaturalIntelligence/stubmatic)** : A QA friendly stub server to mock behaviour of HTTP(s) / REST / SOAP services. You can create simulators or mock services in few minutes without coding.
 * **[fast-lorem-ipsum](https://github.com/NaturalIntelligence/fast-lorem-ipsum)** : Generate lorem ipsum words, sentences, paragraph very quickly. Better than any generater. Works with NPM, browser, and CLI.
