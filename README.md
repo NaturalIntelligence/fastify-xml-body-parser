@@ -93,11 +93,12 @@ Additionaly, it supports following options
 
 ## Worth to mention
 
-Don't forget to check my other opensource projects
+Don't forget to check my other projects
 
-- **[निम्न (NIMN)](https://github.com/nimndata/spec)** : Save upto 85% network bandwidth or storage.
-- **[imglab](https://github.com/NaturalIntelligence/imglab)** : Fast and simple web based tool to label images for machine learning. It supports multiple formats.
-- **[अनुमार्गक (anumargak)](https://github.com/NaturalIntelligence/anumargak)** : The fastest and simple to use router for node web servers.
-- **[शब्दावली (shabdawali) ](https://github.com/amitguptagwl/shabdawali)** : Amazing human like typing effects beyond your imagination. check [वार्ता (vaarta)](https://github.com/amitguptagwl/vaarta) for talking/chatting effects.
-* **[stubmatic](https://github.com/NaturalIntelligence/stubmatic)** : A QA friendly stub server to mock behaviour of HTTP(s) / REST / SOAP services. You can create simulators or mock services in few minutes without coding.
-* **[fast-lorem-ipsum](https://github.com/NaturalIntelligence/fast-lorem-ipsum)** : Generate lorem ipsum words, sentences, paragraph very quickly. Better than any generater. Works with NPM, browser, and CLI.
+- **[BigBit standard)](https://github.com/amitguptagwl/bigbit)** : A standard to reprent any number in the universe in comparitively less space and without precision loss. A standard to save space to represent any text string in comparision of UTF encoding.
+- **[imglab](https://github.com/NaturalIntelligence/imglab)** : Speedup and simplify image labeling / annotation. Supports multiple formats, one click annotation, easy interface and much more. There are more than 20k images are annotated every month.
+- **[अनुमार्गक (anumargak)](https://github.com/NaturalIntelligence/anumargak)** : The fastest and simple router for node js web frameworks with many unique features.
+- [stubmatic](https://github.com/NaturalIntelligence/Stubmatic) : A stub server to mock behaviour of HTTP(s) / REST / SOAP services. You can also mock binary formats.
+- [मुनीम (Muneem)](https://github.com/muneem4node/muneem) : A webframework made for all team members.
+- [शब्दावली (shabdawali)](https://github.com/amitguptagwl/shabdawali) : Amazing human like typing effects beyond your imagination.
+* [fast-lorem-ipsum](https://github.com/NaturalIntelligence/fast-lorem-ipsum) : Generate lorem ipsum words, sentences, paragraph very quickly. Better than any generater. Works with NPM, browser, and CLI.

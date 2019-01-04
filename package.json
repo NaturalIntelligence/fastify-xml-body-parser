@@ -1,6 +1,6 @@
 {
   "name": "fastify-xml-body-parser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Fastify plugin to parse XML payload into JS object",
   "main": "index.js",
   "scripts": {
@@ -15,17 +15,22 @@
     "plugin",
     "parse"
   ],
-  "author": "Amit Gupta (https://github.com/amitguptagwl)",
+  "author": "Amit Gupta (https://amitkumargupta.work)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NaturalIntelligence/fastify-xml-body-parser.git"
+  },
+  "homepage": "https://github.com/NaturalIntelligence/fastify-xml-body-parser",
   "dependencies": {
-    "fast-xml-parser": "^3.12.0",
+    "fast-xml-parser": "^3.12.11",
     "fastify-plugin": "^0.2.2"
   },
   "devDependencies": {
+    "fastify": "^1.0.0-rc.1",
     "istanbul": "^0.4.5",
     "jasmine": "^3.0.0",
     "jasmine-core": "^2.99.1",
-    "fastify": "^1.0.0-rc.1",
-    "request": "^2.83.0"
+    "request": "^2.88.0"
   }
 }
