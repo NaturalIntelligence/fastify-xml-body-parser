@@ -23,13 +23,13 @@
   },
   "homepage": "https://github.com/NaturalIntelligence/fastify-xml-body-parser",
   "dependencies": {
-    "fast-xml-parser": "^3.12.11",
+    "fast-xml-parser": "^3.12.12",
     "fastify-plugin": "^0.2.2"
   },
   "devDependencies": {
-    "fastify": "^1.0.0-rc.1",
+    "fastify": "^1.14.1",
     "istanbul": "^0.4.5",
-    "jasmine": "^3.0.0",
+    "jasmine": "^3.3.1",
     "jasmine-core": "^2.99.1",
     "request": "^2.88.0"
   }
