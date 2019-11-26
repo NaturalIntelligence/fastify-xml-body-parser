@@ -13,7 +13,7 @@ describe("XML Body Parser", function () {
             function(err, response, body) {
                 expect(response.statusCode).toBe(400);
                 var expected = {
-                  msg: "Invalid Format: Invalid [    \"validXML</valid\"] found."
+                  msg: "Invalid Format: Tag 'validXML</valid' is an invalid name."
                 }
                 expect(JSON.parse(body).message).toEqual(expected.msg);
                 done()
