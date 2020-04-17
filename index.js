@@ -2,7 +2,6 @@
 
 const fp = require('fastify-plugin')
 const fxp = require('fast-xml-parser')
-const qs = require('qs')
 
 const defaults = {
     contentType: ["text/xml", "application/xml", "application/rss+xml"],
