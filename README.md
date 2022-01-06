@@ -1,19 +1,10 @@
 # fastify-xml-body-parser
 Fastify plugin / module to parse XML payload / body into JS object
 
-[![Code Climate](https://codeclimate.com/github/NaturalIntelligence/fastify-xml-body-parser/badges/gpa.svg)](https://codeclimate.com/github/NaturalIntelligence/fastify-xml-body-parser) 
-[<img src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_donate_92x26.png" alt="fastify-xml-body-parser donate button"/>](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQJAX48SPUKNC) 
-
-[![Known Vulnerabilities](https://snyk.io/test/github/naturalintelligence/fastify-xml-body-parser/badge.svg)](https://snyk.io/test/github/naturalintelligence/fastify-xml-body-parser) 
-[![NPM quality][quality-image]][quality-url]
-[![Travis ci Build Status](https://travis-ci.org/NaturalIntelligence/fastify-xml-body-parser.svg?branch=master)](https://travis-ci.org/NaturalIntelligence/fastify-xml-body-parser) 
-[![Coverage Status](https://coveralls.io/repos/github/NaturalIntelligence/fastify-xml-body-parser/badge.svg?branch=master)](https://coveralls.io/github/NaturalIntelligence/fastify-xml-body-parser?branch=master) 
-[![bitHound Dev Dependencies](https://www.bithound.io/github/NaturalIntelligence/fastify-xml-body-parser/badges/devDependencies.svg)](https://www.bithound.io/github/NaturalIntelligence/fastify-xml-body-parser/master/dependencies/npm)
-[![bitHound Overall Score](https://www.bithound.io/github/NaturalIntelligence/fastify-xml-body-parser/badges/score.svg)](https://www.bithound.io/github/NaturalIntelligence/fastify-xml-body-parser) 
-
-[quality-image]: http://npm.packagequality.com/shield/fastify-xml-body-parser.svg?style=flat-square
-[quality-url]: http://packagequality.com/#?package=fastify-xml-body-parser
-
+<a href="https://opencollective.com/fast-xml-parser/donate" target="_blank">
+  <img src="https://opencollective.com/fast-xml-parser/donate/button@2x.png?color=blue" width=200 />
+</a>
+<a href="https://paypal.me/naturalintelligence"> <img src="static/img/support_paypal.svg" alt="Stubmatic donate button" width="200"/></a>
 ## Usage
 1. Include in package.json
 ```bash
@@ -46,7 +37,7 @@ fastify.listen(8000, (err) => {
 ```
 
 The sent reply would be the object:
-```json
+```js
 {
   sample: 'data'
 }
@@ -58,18 +49,8 @@ This plugin use [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xm
 ```js
 
 var options = {
-    attributeNamePrefix : "@_",
-    attrNodeName: "attr", //default is 'false'
-    textNodeName : "#text",
-    ignoreAttributes : true,
-    ignoreNameSpace : false,
-    allowBooleanAttributes : false,
-    parseNodeValue : true,
-    parseAttributeValue : false,
-    trimValues: true,
-    decodeHTMLchar: false,
-    cdataTagName: "__cdata", //default is 'false'
-    cdataPositionChar: "\\c",
+  commentPropName: "#comment",
+  preserveOrder: true
 };
 
 const fastify = require('fastify')()
@@ -91,14 +72,16 @@ Additionaly, it supports following options
 ## License
 [MIT License](http://jsumners.mit-license.org/)
 
-## Worth to mention
 
-Don't forget to check my other projects
+## Our other projects and research you must try
 
-- **[BigBit standard)](https://github.com/amitguptagwl/bigbit)** : A standard to reprent any number in the universe in comparitively less space and without precision loss. A standard to save space to represent any text string in comparision of UTF encoding.
-- **[imglab](https://github.com/NaturalIntelligence/imglab)** : Speedup and simplify image labeling / annotation. Supports multiple formats, one click annotation, easy interface and much more. There are more than 20k images are annotated every month.
-- **[अनुमार्गक (anumargak)](https://github.com/NaturalIntelligence/anumargak)** : The fastest and simple router for node js web frameworks with many unique features.
-- [stubmatic](https://github.com/NaturalIntelligence/Stubmatic) : A stub server to mock behaviour of HTTP(s) / REST / SOAP services. You can also mock binary formats.
-- [मुनीम (Muneem)](https://github.com/muneem4node/muneem) : A webframework made for all team members.
-- [शब्दावली (shabdawali)](https://github.com/amitguptagwl/shabdawali) : Amazing human like typing effects beyond your imagination.
-* [fast-lorem-ipsum](https://github.com/NaturalIntelligence/fast-lorem-ipsum) : Generate lorem ipsum words, sentences, paragraph very quickly. Better than any generater. Works with NPM, browser, and CLI.
+* **[BigBit standard](https://github.com/amitguptagwl/bigbit)** : 
+  * Single text encoding to replace UTF-8, UTF-16, UTF-32 and more with less memory.
+  * Single Numeric datatype alternative of integer, float, double, long, decimal and more without precision loss.
+* **[Cytorus](https://github.com/NaturalIntelligence/cytorus)**: Now be specific and flexible while running E2E tests.
+  * Run tests only for a particular User Story
+  * Run tests for a route or from a route
+  * Customizable reporting
+  * Central dashboard for better monitoring
+  * Options to integrate E2E tests with Jira, Github etc using Central dashboard `Tian`.
+* **[Stubmatic](https://github.com/NaturalIntelligence/Stubmatic)** : Create fake webservices, DynamoDB or S3 servers, Manage fake/mock stub data, Or fake/Debug any HTTP(s) call.

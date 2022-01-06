@@ -1,12 +1,10 @@
 {
   "name": "fastify-xml-body-parser",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Fastify plugin to parse XML payload into JS object",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine test/*test.js",
-    "coverage": "istanbul cover -x \"test/*test.js\" jasmine test/*test.js;",
-    "coverage:check": "istanbul check-coverage --branch 90 --statement 90"
+    "test": "jasmine test/*test.js"
   },
   "keywords": [
     "fastify",
@@ -23,12 +21,11 @@
   },
   "homepage": "https://github.com/NaturalIntelligence/fastify-xml-body-parser",
   "dependencies": {
-    "fast-xml-parser": "^3.15.0",
-    "fastify-plugin": "^0.2.2"
+    "fast-xml-parser": "^4.0.0",
+    "fastify-plugin": "^3.0.0"
   },
   "devDependencies": {
-    "fastify": "^2.15.1",
-    "istanbul": "^0.4.5",
+    "fastify": "^2.15.3",
     "jasmine": "^3.5.0",
     "jasmine-core": "^2.99.1",
     "request": "^2.88.0"

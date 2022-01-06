@@ -23,7 +23,7 @@ describe("XML Body Parser", function () {
 
         it("should parse valid XML payload including namespace", function (done) {
         runFastify(
-            { ignoreNameSpace: true},
+            { removeNSPrefix: true},
             "<ns:valid>XML</ns:valid>",
             "application/xml",
             function(err, response, body){

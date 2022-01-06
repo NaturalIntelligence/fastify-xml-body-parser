@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 
-const fp = require('fastify-plugin')
-const fxp = require('fast-xml-parser')
+const fp = require('fastify-plugin');
+const fxp = require('fast-xml-parser');
 
 const defaults = {
     contentType: ["text/xml", "application/xml", "application/rss+xml"],
@@ -12,6 +12,7 @@ function xmlBodyParserPlugin(fastify, options, next) {
     const opts = Object.assign({}, defaults, options || {})
 
     function contentParser(req, done) {
+        const xmlParser = new fxp.XMLParser(opts);
         const parsingOpts = opts;
 
         let body = ''
@@ -24,36 +25,36 @@ function xmlBodyParserPlugin(fastify, options, next) {
         }
         function endListener () {
             if (parsingOpts.validate) {
-                var result = fxp.validate(body, parsingOpts)
+                const result = fxp.XMLValidator.validate(body, parsingOpts);
                 if (result.err) {
-                    const invalidFormat = new Error('Invalid Format: ' + result.err.msg)
-                    invalidFormat.statusCode = 400
-                    req.removeListener('error', errorListener)
-                    req.removeListener('data', dataListener)
-                    req.removeListener('end', endListener)
-                    done(invalidFormat)
+                    const invalidFormat = new Error('Invalid Format: ' + result.err.msg);
+                    invalidFormat.statusCode = 400;
+                    req.removeListener('error', errorListener);
+                    req.removeListener('data', dataListener);
+                    req.removeListener('end', endListener);
+                    done(invalidFormat);
                 }
             }
-            done(null, fxp.parse(body, parsingOpts))
+            done(null, xmlParser.parse(body));
         }
         function dataListener(data) {
-            body = body + data
+            body = body + data;
         }
     }
 
     if(typeof opts.contentType === "string"){
-      fastify.addContentTypeParser(opts.contentType, contentParser)
+      fastify.addContentTypeParser(opts.contentType, contentParser);
       //console.log(fastify.hasContentTypeParser(opts.contentType));
     }else{
       for(var i=0; i< opts.contentType.length; i++){
-        fastify.addContentTypeParser(opts.contentType[i], contentParser)
+        fastify.addContentTypeParser(opts.contentType[i], contentParser);
       }
     }
     
-    next()
+    next();
 }
 
 module.exports = fp(xmlBodyParserPlugin, {
-    fastify: '>=1.0.0-rc.1',
+    fastify: '>=3.0.0',
     name: 'fastify-xml-body-parser'
 })
