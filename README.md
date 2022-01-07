@@ -5,6 +5,7 @@ Fastify plugin / module to parse XML payload / body into JS object
   <img src="https://opencollective.com/fast-xml-parser/donate/button@2x.png?color=blue" width=200 />
 </a>
 <a href="https://paypal.me/naturalintelligence"> <img src="static/img/support_paypal.svg" alt="Stubmatic donate button" width="200"/></a>
+
 ## Usage
 1. Include in package.json
 ```bash
