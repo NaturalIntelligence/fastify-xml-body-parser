@@ -11,14 +11,14 @@ const defaults = {
 function xmlBodyParserPlugin(fastify, options, next) {
     const opts = Object.assign({}, defaults, options || {})
 
-    function contentParser(req, done) {
+    function contentParser(req, payload, done) {
         const xmlParser = new fxp.XMLParser(opts);
         const parsingOpts = opts;
 
         let body = ''
-        req.on('error', errorListener)
-        req.on('data', dataListener)
-        req.on('end', endListener)
+        payload.on('error', errorListener)
+        payload.on('data', dataListener)
+        payload.on('end', endListener)
 
         function errorListener (err) {
           done(err)
@@ -29,9 +29,9 @@ function xmlBodyParserPlugin(fastify, options, next) {
                 if (result.err) {
                     const invalidFormat = new Error('Invalid Format: ' + result.err.msg);
                     invalidFormat.statusCode = 400;
-                    req.removeListener('error', errorListener);
-                    req.removeListener('data', dataListener);
-                    req.removeListener('end', endListener);
+                    payload.removeListener('error', errorListener);
+                    payload.removeListener('data', dataListener);
+                    payload.removeListener('end', endListener);
                     done(invalidFormat);
                 }
             }
