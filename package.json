@@ -25,7 +25,7 @@
     "fastify-plugin": "^3.0.0"
   },
   "devDependencies": {
-    "fastify": "^2.15.3",
+    "fastify": "^3.27.1",
     "jasmine": "^3.5.0",
     "jasmine-core": "^2.99.1",
     "request": "^2.88.0"
