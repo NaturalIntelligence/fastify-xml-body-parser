@@ -33,12 +33,22 @@ function xmlBodyParserPlugin(fastify, options, next) {
                     payload.removeListener('data', dataListener);
                     payload.removeListener('end', endListener);
                     done(invalidFormat);
-                }
+              } else {
+                  handleParseXml(body);
+              }
+            } else {
+                handleParseXml(body);
             }
-            done(null, xmlParser.parse(body));
         }
         function dataListener(data) {
             body = body + data;
+        }
+        function handleParseXml(body) {
+            try {
+                done(null, xmlParser.parse(body));
+            } catch (err) {
+                done(err);
+            }
         }
     }
 
