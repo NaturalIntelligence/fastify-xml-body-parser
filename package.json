@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/NaturalIntelligence/fastify-xml-body-parser",
   "dependencies": {
-    "fast-xml-parser": "^4.1.2",
+    "fast-xml-parser": "^4.2.4",
     "fastify-plugin": "^3.0.0"
   },
   "devDependencies": {
