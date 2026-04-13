@@ -1,88 +1,136 @@
 # fastify-xml-body-parser
-Fastify plugin / module to parse XML payload / body into JS object
 
-<a href="https://opencollective.com/fast-xml-parser/donate" target="_blank">
-  <img src="https://opencollective.com/fast-xml-parser/donate/button@2x.png?color=blue" width=200 />
-</a>
-<a href="https://paypal.me/naturalintelligence"> <img src="static/img/support_paypal.svg" alt="Stubmatic donate button" width="200"/></a>
+[![npm version](https://badge.fury.io/js/fastify-xml-body-parser.svg)](https://badge.fury.io/js/fastify-xml-body-parser)
 
-## Usage
-1. Include in package.json
+Fastify plugin to parse XML request bodies into JavaScript objects. Powered by [`@nodable/flexible-xml-parser`](https://www.npmjs.com/package/@nodable/flexible-xml-parser).
+
+## Installation
+
 ```bash
-$npm install fastify-xml-body-parser
-#or
-$yarn add fastify-xml-body-parser
+npm install fastify-xml-body-parser
 ```
 
-2. Then import in your code and register with fastify
-
-**Sample POST body / payload**
-```
-<sample>data</sample>
-```
+## Quick Start
 
 ```js
+const fastify = require('fastify')();
+const xmlBodyParser = require('fastify-xml-body-parser');
 
-const fastify = require('fastify')()
+fastify.register(xmlBodyParser);
 
-fastify.register(require('fastify-xml-body-parser'))
+fastify.post('/api', (req, res) => {
+  console.log(req.body); // parsed JS object
+  res.send(req.body);
+});
 
-fastify.post('/', (req, reply) => {
-  console.log(req.body.sample)//data
-  reply.send(req.body)
-})
-
-fastify.listen(8000, (err) => {
-  if (err) throw err
-})
+fastify.listen({ port: 3000 });
 ```
 
-The sent reply would be the object:
-```js
-{
-  sample: 'data'
-}
+Send a request:
+
+```bash
+curl -X POST http://localhost:3000/api \
+  -H 'Content-Type: application/xml' \
+  -d '<book><title>1984</title><year>1949</year></book>'
+# → { book: { title: '1984', year: 1949 } }
 ```
 
 ## Options
-This plugin use [fast-xml-parser](https://github.com/NaturalIntelligence/fast-xml-parser) to parse the XML payload. So it accepts all the options supported by fast-xml-parser.
+
+All options are passed directly to `@nodable/flexible-xml-parser`. The only plugin-specific option is `contentType`.
+
+### `contentType`
+
+Content-type string or array of strings to register the parser for.
+
+**Default:** `['text/xml', 'application/xml', 'application/rss+xml']`
 
 ```js
+// Single content type
+fastify.register(xmlBodyParser, { contentType: 'application/atom+xml' });
 
-var options = {
-  commentPropName: "#comment",
-  preserveOrder: true
-};
-
-const fastify = require('fastify')()
-
-fastify.register(require('fastify-xml-body-parser'), options)
-
+// Multiple content types
+fastify.register(xmlBodyParser, {
+  contentType: ['text/xml', 'application/xml', 'my/xml'],
+});
 ```
 
-Additionaly, it supports following options
+### Parser Options (from `@nodable/flexible-xml-parser`)
 
-* **validate**: If it is set to `true`, this plugin validate the payload for valid XML syntax before parsing.
-* **contentType**:  It accepts a string or an array of content types. By default it is set to `["text/xml", "application/xml", "application/rss+xml"]`.
+Any additional options are forwarded to the parser. The plugin sets HTTP-appropriate defaults that differ from the library's own defaults:
 
-**Note**: I've not included body size limit to this plugin because of following reasons
-* I believe it's good to use API gateway to handle non-functional requirements, like security.
-* There are already some plugins which verifies for body length. It'll be a performance degrade if all the plugins are doing the same thing.
+| Option | Plugin default | Description |
+|---|---|---|
+| `skip.attributes` | `false` | Attributes are parsed — common in XML APIs and SOAP/RSS |
+| `skip.nsPrefix` | `false` | Set to `true` to strip namespace prefixes |
+| `attributes.prefix` | `'@_'` | Prefix for attribute keys |
+| `limits.maxNestedTags` | `100` | Rejects deeply nested payloads (DoS guard) |
+| `limits.maxAttributesPerTag` | `50` | Rejects attribute-flood payloads (DoS guard) |
+| `doctypeOptions.enabled` | `false` | DOCTYPE entity expansion disabled (safe default) |
 
+User-supplied `limits` and `skip` are **merged** with these defaults, so you only need to specify what you want to change.
+
+### Opt out of attribute parsing
+
+```js
+fastify.register(xmlBodyParser, {
+  skip: { attributes: true },
+});
+```
+
+### Strip namespace prefixes
+
+```js
+fastify.register(xmlBodyParser, {
+  skip: { nsPrefix: true },
+});
+// <soap:Envelope><soap:Body>hello</soap:Body></soap:Envelope>
+// → { Envelope: { Body: 'hello' } }
+```
+
+### Security: protect against malicious input
+
+For public-facing endpoints, set structural limits:
+
+```js
+fastify.register(xmlBodyParser, {
+  limits: {
+    maxNestedTags: 50,
+    maxAttributesPerTag: 20,
+  },
+  doctypeOptions: { enabled: false }, // default — never expand DOCTYPE from untrusted input
+});
+```
+
+Malformed or limit-exceeding XML is automatically rejected with a `400 Bad Request` response.
+
+## Error Handling
+
+Parse errors are returned as `400 Bad Request` with a JSON body:
+
+```json
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": "Invalid Format: <description>"
+}
+```
+
+All other unexpected errors propagate to Fastify's standard error handler.
+
+## Migration from v2
+
+v3 drops `fast-xml-parser` in favour of `@nodable/flexible-xml-parser`. The API surface is similar but there are breaking changes:
+
+| v2 | v3 |
+|---|---|
+| `validate: true` | Removed — parse errors always throw `ParseError` and return 400 |
+| `removeNSPrefix: true` | `skip: { nsPrefix: true }` |
+| `ignoreAttributes: false` | `skip: { attributes: false }` |
+| `attributeNamePrefix` | `attributes.prefix` |
+| `fastify-plugin` v3 | `fastify-plugin` v5 |
+| Fastify `>=3` | Fastify `>=4` |
 
 ## License
-[MIT License](http://jsumners.mit-license.org/)
 
-
-## Our other projects and research you must try
-
-* **[BigBit standard](https://github.com/amitguptagwl/bigbit)** : 
-  * Single text encoding to replace UTF-8, UTF-16, UTF-32 and more with less memory.
-  * Single Numeric datatype alternative of integer, float, double, long, decimal and more without precision loss.
-* **[Cytorus](https://github.com/NaturalIntelligence/cytorus)**: Now be specific and flexible while running E2E tests.
-  * Run tests only for a particular User Story
-  * Run tests for a route or from a route
-  * Customizable reporting
-  * Central dashboard for better monitoring
-  * Options to integrate E2E tests with Jira, Github etc using Central dashboard `Tian`.
-* **[Stubmatic](https://github.com/NaturalIntelligence/Stubmatic)** : Create fake webservices, DynamoDB or S3 servers, Manage fake/mock stub data, Or fake/Debug any HTTP(s) call.
+MIT — [Amit Gupta](https://solothought.com)
