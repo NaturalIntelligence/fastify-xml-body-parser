@@ -1,6 +1,8 @@
 # fastify-xml-body-parser
 
-[![npm version](https://badge.fury.io/js/fastify-xml-body-parser.svg)](https://badge.fury.io/js/fastify-xml-body-parser)
+[![fastify-xml-body-parser downloads](https://img.shields.io/npm/dw/fastify-xml-body-parser.svg)](https://npm-compare.com/fastify-xml-body-parser) 
+[![fastify-xml-body-parser version](https://img.shields.io/npm/v/fastify-xml-body-parser.svg)](https://www.npmjs.com/package/fastify-xml-body-parser)
+[![fastify-xml-body-parser license](https://img.shields.io/npm/l/fastify-xml-body-parser.svg)](https://github.com/NaturalIntelligence/fastify-xml-body-parser)
 
 Fastify plugin to parse XML request bodies into JavaScript objects. Powered by [`@nodable/flexible-xml-parser`](https://www.npmjs.com/package/@nodable/flexible-xml-parser).
 
